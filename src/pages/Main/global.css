@@ -1,0 +1,25 @@
+/* src/styles/global.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 768px) {
+    .header,
+    .banner,
+    .recommendation,
+    .popularActivities {
+      padding: 10px;
+    }
+  
+    .recommendation .buttons {
+      flex-direction: column;
+    }
+  
+    .popularActivities .activityList {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
