@@ -14,7 +14,7 @@ const TodayChallenge: React.FC = () => {
   };
 
   return (
-    <div className="relative w-[100vw] h-[607px] bg-white flex flex-col items-center justify-center">
+    <div className="relative w-[100vw] h-[650px] bg-white flex flex-col items-center justify-center">
       {/* Top Hashtags */}
       <div className="flex justify-between w-full px-80 text-[#59C642] mb-4 text-[16px] font-regular space-x-4">
         <span>#오늘도 해냈다!</span>
@@ -24,7 +24,7 @@ const TodayChallenge: React.FC = () => {
       {/* Main Title */}
       <h1 className="text-[33px] font-semibold text-green-500 mb-2">오늘의 챌린지</h1>
       {/* Date */}
-      <span className="text-[20px] font-regular text-gray-500 mb-[5rem]">2024년 11월 14일 (목)</span>
+      <span className="text-[20px] font-regular text-gray-500 mb-[8rem]">2024년 11월 14일 (목)</span>
       {/* Oval Character and Challenge Title */}
       <div className="relative flex items-center w-[1080px] h-[171px] justify-center border-2 border-green-500 rounded-full py-4 px-40">
         {/* Character Image Placeholder */}

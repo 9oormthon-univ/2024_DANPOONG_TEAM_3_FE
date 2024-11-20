@@ -10,7 +10,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
 
         {/* 여행콘텐츠 페이지 라우팅 */}
-        {/* <Route path="/example" element={<ExamplePage />} /> */}
+        {/* <Route path="/travle-contents" element={<TravleContents />} /> */}
       </Routes>
     </Router>
   );
