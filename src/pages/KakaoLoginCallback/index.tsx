@@ -10,7 +10,7 @@ export function KakaoLoginCallback() {
         postKakaoLogin(code, () => {
             navigate('/');
         });
-    }, [code]);
+    }, []);
 
     return (
         <div>
