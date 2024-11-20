@@ -3,7 +3,7 @@ import { KakaoLoginButton } from './component/KakaoLoginButton';
 import Logo from '@/assets/OutOfCityLogo.svg?react';
 import { RegisterInformation } from './component/RegisterInformation';
 
-export function UserAuth() {
+export function UserAuthPage() {
     return (
         <>
             <Logo className="absolute top-0 left-0 mt-10 ml-14" />
