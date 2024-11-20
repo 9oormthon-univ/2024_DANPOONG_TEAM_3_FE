@@ -1,20 +1,20 @@
 // src/pages/Main/component/MainPage.tsx
-import Header from './component/Header';
-import Banner from './component/Banner';
-import Challenge from './component/Challenge';
-import Recommendation from './component/Recommendation';
-import PopularActivities from './component/PopularActivities';
-import Footer from './component/Footer';
+import Header from './component/Header.tsx';
+import Banner from './component/Banner.tsx';
+// import SearchBar from './component/SearchBar.tsx';
+// import TodayChallenge from './component/TodayChallenge.tsx';
+// import RecommendSlide from './component/RecommnedSlide.tsx';
+// import PopularActivitySlide from './component/PopularActivitySlide.tsx';
 
 const MainPage = () => {
   return (
     <div>
       <Header />
       <Banner />
-      <Challenge />
-      <Recommendation />
-      <PopularActivities />
-      <Footer />
+        {/* <SearchBar />
+      <TodayChallenge />
+      <RecommendSlide />
+      <PopularActivitySlide /> */}
     </div>
   );
 };
