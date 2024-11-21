@@ -59,8 +59,6 @@ export function Calendar({ tagData }: { tagData: Record<string, string> }) {
                     <ChevronRightIcon className="hover:text-uiGray" />
                 </ArrowButton>
             </div>
-
-            {/* Calendar Grid */}
             <div className="grid grid-cols-7 gap-2">
                 {SEVEN_DAYS.map((day, idx) => (
                     <div key={idx} className="text-center font-bold">
@@ -93,12 +91,36 @@ function DayBox({ isCurrentMonth, day, tag }: { isCurrentMonth: boolean; day: Da
                 isCurrentMonth ? 'text-uiBlack' : 'text-uiGray'
             } ${isSameDay(day, new Date()) ? 'border-main' : ''}`}
         >
-            <span className="text-sm">{format(day, 'd')}</span>
+            <span className={`text-sm ${isSameDay(day, new Date()) ? 'text-main font-semibold' : ''}`}>
+                {format(day, 'd')}
+            </span>
             {tag && (
                 <div className="self-center">
-                    {tag === 'approved' ? <Approved /> : tag === 'declined' ? <Declined /> : null}
+                    {tag === 'approved' ? (
+                        <Approved />
+                    ) : tag === 'declined' ? (
+                        <Declined />
+                    ) : tag === 'pending' ? (
+                        <Pending />
+                    ) : null}
                 </div>
             )}
+        </div>
+    );
+}
+
+function Pending() {
+    return (
+        <div className="flex justify-center items-center relative">
+            <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M69 35C69 53.7777 53.7777 69 35 69C16.2223 69 1 53.7777 1 35C1 16.2223 16.2223 1 35 1C53.7777 1 69 16.2223 69 35Z"
+                    fill="white"
+                    stroke="#95E883"
+                    stroke-width="2"
+                />
+            </svg>
+            <div className="text-main font-semibold absolute">인증중</div>
         </div>
     );
 }

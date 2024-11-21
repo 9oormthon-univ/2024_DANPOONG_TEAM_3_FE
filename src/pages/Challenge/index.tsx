@@ -6,10 +6,11 @@ import { Calendar } from './component/Calendar';
 
 export function Challenge() {
     // 날짜별 태그 데이터를 전달합니다.
-    // approved: 승인됨, declined: 거절됨
+    // approved: 승인됨, declined: 거절됨, pending: 대기 중
     const tagData = {
         '2024-11-06': 'approved',
         '2024-11-07': 'declined',
+        '2024-11-21': 'pending',
     };
 
     return (
