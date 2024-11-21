@@ -13,6 +13,8 @@ module.exports = {
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 main: 'hsl(var(--main))',
+                uiGray: 'hsl(var(--uiGray))',
+                uiBlack: 'hsl(var(--uiBlack))',
                 card: {
                     DEFAULT: 'hsl(var(--card))',
                     foreground: 'hsl(var(--card-foreground))',
