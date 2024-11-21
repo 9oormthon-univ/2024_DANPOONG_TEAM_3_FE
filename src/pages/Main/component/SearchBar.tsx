@@ -29,10 +29,10 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className="relative w-[1080px] h-[82px] bg-white rounded-full border-2 border-green-500 flex items-center px-4 space-x-4 z-10">
+    <div className="relative w-[1080px] h-[82px] bg-white rounded-full border-2 border-green-500 flex items-center px-4 space-x-4 z-50">
       {(isRegionModalOpen || isCalendarModalOpen || isPeopleModalOpen) && (
         <div
-          className="fixed inset-0 z-10 bg-transparent"
+          className="fixed inset-0 z-50 bg-transparent"
           onClick={handleOutsideClick} // 외부 클릭 처리
         />
       )}

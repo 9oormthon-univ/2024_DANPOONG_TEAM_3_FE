@@ -26,7 +26,7 @@ const PopularActivitySlide: React.FC = () => {
   };
 
   return (
-    <div className="relative w-[100vw] h-[750px] bg-gradient-to-r from-[#F7FEF5] to-[#FFFFFF] flex flex-col pt-[10rem]">
+    <div className="relative w-[100vw] h-[750px] bg-gradient-to-r from-[#F7FEF5] to-[#FFFFFF] flex flex-col pt-[7rem]">
         {/* Title */}
         <h2 className="text-[30px] font-regular text-[#000000] text-left pl-[18rem]">인기 액티비티</h2>
 

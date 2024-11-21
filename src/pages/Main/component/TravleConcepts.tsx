@@ -9,7 +9,7 @@ const TravelConcepts: React.FC = () => {
   };
 
   return (
-    <div className="relative w-[100vw] h-[650px] bg-white flex flex-col items-start pl-[18rem] py-12 pt-[8rem]">
+    <div className="relative w-[100vw] h-[630px] bg-white flex flex-col items-start pl-[18rem] py-12 pt-[8rem]">
       {/* Title */}
       <h2 className="text-[30px] font-medium text-[#59C642] mb-2">여행가서 뭘 할 지 모르겠다면</h2>
       <h1 className="text-[35px] font-bold text-[#59C642] mb-[10rem]">당신이 원하는 이번 여행은 무엇인가요?</h1>
