@@ -4,6 +4,7 @@ import TravleConcepts from './component/TravleConcepts';
 import SearchBar from './component/SearchBar';
 import RecommendList from './component/RecommendList';
 import CustomerFooter from './component/CustomFooter';
+// import { ConceptType } from '../.././types/types';
 
 const TravleContents: React.FC = () => {
   const [selectedConcept, setSelectedConcept] = useState<string | null>(null);
@@ -25,6 +26,7 @@ const TravleContents: React.FC = () => {
       {selectedConcept && searchData && (
         <>
           <RecommendList concept={selectedConcept} region={searchData.region} date={searchData.date} />
+          {/* @ts-ignore */}
           <CustomerFooter concept={selectedConcept} />
         </>
       )}
