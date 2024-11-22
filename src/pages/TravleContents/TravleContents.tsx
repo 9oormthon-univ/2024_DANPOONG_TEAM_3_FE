@@ -5,6 +5,7 @@ import SearchBar from './component/SearchBar';
 import RecommendList from './component/RecommendList';
 import CustomerFooter from './component/CustomFooter';
 // import { ConceptType } from '../.././types/types';
+import Footer from ".././Main/component/Footer";
 
 const TravleContents: React.FC = () => {
   const [selectedConcept, setSelectedConcept] = useState<string | null>(null);
@@ -23,7 +24,11 @@ const TravleContents: React.FC = () => {
       <Header />
       <TravleConcepts onSelectConcept={handleConceptSelect} />
       <SearchBar onSearchComplete={handleSearchComplete} />
-      {selectedConcept && searchData && (
+      
+      {/* 기존 Footer와 CustomerFooter 조건부 렌더링 */}
+      {!selectedConcept || !searchData ? (
+        <Footer />
+      ) : (
         <>
           <RecommendList concept={selectedConcept} region={searchData.region} date={searchData.date} />
           {/* @ts-ignore */}
