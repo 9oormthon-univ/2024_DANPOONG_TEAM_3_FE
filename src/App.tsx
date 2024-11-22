@@ -6,6 +6,7 @@ import { Challenge } from './pages/Challenge';
 import { OverlayProvider } from '@toss/use-overlay';
 import './App.css';
 import MainPage from './pages/Main/MainPage.tsx';
+import TravleContents from "./pages/TravleContents/TravleContents.tsx";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/api/callback" element={<KakaoLoginCallback />} />
                     <Route path="/challenge" element={<Challenge />} />
                     <Route path="/" element={<MainPage />} />
+                    <Route path="/content" element={<TravleContents />} />
                 </Routes>
             </BrowserRouter>
         </OverlayProvider>
