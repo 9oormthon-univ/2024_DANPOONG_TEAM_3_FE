@@ -3,7 +3,7 @@ import footerIllustration from "../../.././assets/main-footer.svg";
 
 const Footer: React.FC = () => {
   return (
-    <div className="relative w-full h-[300px] bg-gradient-to-t from-[#DEF8D9] to-[#FBFEFA] flex items-end">
+    <div className="relative w-full h-[300px] bg-gradient-to-t from-[#DEF8D9] flex items-end">
       {/* 일러스트 배경 이미지 */}
       <img 
         src={footerIllustration} 
