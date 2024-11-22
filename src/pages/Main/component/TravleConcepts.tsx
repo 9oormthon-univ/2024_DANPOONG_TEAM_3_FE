@@ -17,7 +17,7 @@ const TravelConcepts: React.FC = () => {
       {/* Buttons */}
       <div className="flex space-x-8 text-center text-gray-500 text-[20px] mb-[5rem]">
         <button
-          onClick={() => handleNavigate('/content/relax')}
+          onClick={() => handleNavigate('/content')}
           className="text-[20px] font-regular text-gray-500 hover:text-[#59C642] bg-transparent border-none focus:outline-none"
         >
         <div className="pl-[17rem]">
@@ -27,7 +27,7 @@ const TravelConcepts: React.FC = () => {
         </button>
         <div className="border-l-2 border-gray-300 h-full"></div>
         <button
-          onClick={() => handleNavigate('/content/different')}
+          onClick={() => handleNavigate('/content')}
           className="text-[20px] font-regular text-gray-500 hover:text-[#59C642] bg-transparent border-none focus:outline-none"
         >
           <span className="block">색다른 여행을</span>
@@ -35,7 +35,7 @@ const TravelConcepts: React.FC = () => {
         </button>
         <div className="border-l-2 border-gray-300 h-full"></div>
         <button
-          onClick={() => handleNavigate('/content/memories')}
+          onClick={() => handleNavigate('/content')}
           className="text-[20px] font-regular text-gray-500 hover:text-[#59C642] bg-transparent border-none focus:outline-none"
         >
           <span className="block">추억이 될 만한</span>
