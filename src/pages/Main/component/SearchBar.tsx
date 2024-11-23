@@ -1,4 +1,3 @@
-//메인 검색바
 import React, { useState } from 'react';
 import SearchIcon from "../../.././assets/main-search.svg";
 import CalendarIcon from "../../.././assets/main-calendar.svg";
@@ -9,24 +8,36 @@ import CalendarModal from './CalendarModal';
 import PeopleModal from './PeopleModal';
 
 const SearchBar: React.FC = () => {
-  const [region, setRegion] = useState('여행지역');
+  const [region, setRegion] = useState<string>('');
   const [isRegionModalOpen, setIsRegionModalOpen] = useState(false);
   const [isRegionInputFocused, setIsRegionInputFocused] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [selectedDateRange, setSelectedDateRange] = useState<string>('일정');
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
   const [isPeopleModalOpen, setIsPeopleModalOpen] = useState(false);
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
 
+  // 엔터키 입력 시 모달 닫기
+  const handleRegionKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      setIsRegionModalOpen(false);
+    }
+  };
+
+  // 외부 클릭 시 모달 닫기
   const handleOutsideClick = () => {
     setIsRegionModalOpen(false);
     setIsRegionInputFocused(false);
     setIsCalendarModalOpen(false);
-    setIsPeopleModalOpen(false); // 추가: 외부 클릭 시 PeopleModal 닫기
+    setIsPeopleModalOpen(false);
   };
 
   const handleSearchClick = () => {
-    alert('찾으시는 조건에 맞는 여행 상품을 알려드리겠습니다!');
+    if (region && selectedDateRange !== '일정') {
+      alert(`여행지: ${region}, 일정: ${selectedDateRange}, 성인: ${adultCount}, 어린이: ${childCount}`);
+    } else {
+      alert('여행지역과 일정을 모두 선택해주세요.');
+    }
   };
 
   return (
@@ -40,26 +51,32 @@ const SearchBar: React.FC = () => {
 
       {/* 여행지역 검색창 */}
       <div
-        className={`flex justify-between items-center w-1/3 px-4 py-2 cursor-pointer rounded-full ${
+        className={`flex justify-between items-center w-1/3 px-4 py-2 rounded-full ${
           isRegionInputFocused ? 'bg-transparent border border-black' : 'bg-gray-100'
         }`}
-        onClick={() => {
-          setRegion('가고싶은 여행지를 입력하세요');
-          setIsRegionModalOpen(true);
-          setIsRegionInputFocused(true);
-        }}
       >
         <input
           type="text"
           value={region}
           onChange={(e) => setRegion(e.target.value)}
-          className={`flex-1 outline-none ${
-            isRegionInputFocused ? 'bg-transparent' : 'bg-gray-100'
-          } text-gray-700`}
+          onFocus={() => {
+            setIsRegionModalOpen(true);
+            setIsRegionInputFocused(true);
+          }}
+          onKeyDown={handleRegionKeyDown}
+          className="flex-1 outline-none bg-transparent text-gray-700"
           placeholder="가고싶은 여행지를 입력하세요"
         />
-        <img src={LocationIcon} className="h-5 w-5 text-gray-500 ml-2" />
+        <img src={LocationIcon} className="h-5 w-5 text-gray-500 ml-2" alt="location icon" />
       </div>
+      {isRegionModalOpen && (
+        <RegionModal
+          onSelectRegion={(selectedRegion: string) => {
+            setRegion(selectedRegion);
+            setIsRegionModalOpen(false);
+          }}
+        />
+      )}
 
       {/* 일정 검색창 */}
       <div className="relative flex w-1/3">
@@ -69,17 +86,18 @@ const SearchBar: React.FC = () => {
           }`}
           onClick={() => setIsCalendarModalOpen(true)}
         >
-          <span className="text-[#222222]">{selectedDate ? selectedDate : '일정'}</span>
-          <img src={CalendarIcon} className="h-5 w-5 text-gray-500 ml-2" />
+          <span className="text-[#222222]">{selectedDateRange}</span>
+          <img src={CalendarIcon} className="h-5 w-5 text-gray-500 ml-2" alt="calendar icon" />
         </div>
 
         {isCalendarModalOpen && (
           <div className="absolute top-full mt-0 left-1/2 transform -translate-x-1/2 w-[436px]">
             <CalendarModal
-              onSelectDate={(date) => {
-                setSelectedDate(date);
+              onSelectDateRange={(startDate: string, endDate: string) => {
+                setSelectedDateRange(`${startDate} ~ ${endDate}`);
                 setIsCalendarModalOpen(false);
               }}
+              onClose={() => setIsCalendarModalOpen(false)}
             />
           </div>
         )}
@@ -116,10 +134,8 @@ const SearchBar: React.FC = () => {
 
       {/* 검색 버튼 */}
       <div onClick={handleSearchClick} className="cursor-pointer">
-        <img src={SearchIcon} className="h-[56px] w-[56px]" alt="Search Icon" />
+        <img src={SearchIcon} className="h-[56px] w-[56px]" alt="search icon" />
       </div>
-
-      {isRegionModalOpen && <RegionModal />}
     </div>
   );
 };
