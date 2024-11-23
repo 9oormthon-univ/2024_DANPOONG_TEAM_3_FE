@@ -4,7 +4,7 @@ export function Title() {
     const today = new Date();
 
     return (
-        <div className="flex w-[69.75rem] justify-between">
+        <div className="flex w-[69.75rem] justify-between mt-[105px]">
             <Tag tag="" />
             <Tag tag="#오늘도 해냈다!" />
             <div className="flex flex-col gap-3">

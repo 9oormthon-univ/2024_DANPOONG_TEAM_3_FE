@@ -1,17 +1,21 @@
-import { Popover, PopoverContent } from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { ReactNode } from 'react';
 
-export function TimeSelectPopover({ open, setOpen }: { open: boolean; setOpen: () => void }) {
+export function TimeSelectPopover({
+    trigger,
+    content,
+    disabled,
+}: {
+    trigger: ReactNode;
+    content: ReactNode;
+    disabled?: boolean;
+}) {
     return (
-        <Popover open={open} onOpenChange={setOpen}>
-            <PopoverContent className="w-80">
-                <div className="grid gap-4">
-                    <div className="space-y-2">
-                        <h4 className="font-medium leading-none">Dimensions</h4>
-                        <p className="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
-                    </div>
-                    <div className="grid gap-2">fdjdlfk</div>
-                </div>
-            </PopoverContent>
+        <Popover>
+            <PopoverTrigger disabled={disabled} className="!w-full">
+                {trigger}
+            </PopoverTrigger>
+            <PopoverContent className="!w-[27rem] h-fit bg-[#F0F0F0]">{content}</PopoverContent>
         </Popover>
     );
 }
