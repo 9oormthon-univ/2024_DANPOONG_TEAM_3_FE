@@ -13,7 +13,12 @@ const Header: React.FC = () => {
     return (
         <header className="w-full h-[105px] flex items-center justify-between px-20 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
             <div className="flex items-center space-x-24">
-                <img src={MainLogo} alt="Logo" className="h-12 w-12" />
+                <img
+                    src={MainLogo}
+                    alt="Logo"
+                    className="h-12 w-12 cursor-pointer"
+                    onClick={() => (window.location.href = '/')}
+                />
                 <Link
                     to="/activity"
                     className={`hover:text-[#222222] font-medium ${
