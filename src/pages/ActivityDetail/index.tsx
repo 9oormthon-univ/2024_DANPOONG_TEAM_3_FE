@@ -7,6 +7,8 @@ import { Location } from './components/Location';
 import { Reservation } from './components/Reservation';
 import { Reviews } from './components/Review';
 import Header from '../Main/component/Header';
+import { useGetActivityDetail } from './hooks/useGetActivityDetail';
+import { useParams } from 'react-router-dom';
 
 const mockData = {
     code: 200,
@@ -88,30 +90,104 @@ const mockData = {
     },
 };
 
-const { data } = mockData;
-const reviewRate = { serviceRate: 5, interestRate: 4, locationRate: 1, priceRate: 3 };
+// const { data } = mockData;
+// "reviewCount": 0,
+//     "locationAverage": 0,
+//     "serviveAverage": 0,
+//     "interestAverage": 0,
+//     "priceAverage": 0,
+//     "ratingAverage": 0.0,
 
 export function ActivityDetailPage() {
+    const { id } = useParams();
+    const { data } = useGetActivityDetail(Number(id));
+    const reviewRate = {
+        serviceRate: data?.serviceAverage,
+        interestRate: data?.interestAverage,
+        locationRate: data?.locationAverage,
+        priceRate: data?.priceAverage,
+    };
     return (
         <div className="size-full">
             <Header />
             <Spacing direction="vertical" size={56} />
             <div className="flex justify-center items-center flex-col w-full h-fit mt-[105px]">
                 <div className="w-[58.451rem]">
-                    <ImageCarousel images={data.activityPhotos} />
+                    <ImageCarousel images={data?.activityPhotos} />
                     <Spacing direction="vertical" size={54} />
-                    <Title title={data.location.address.replace('시', '').trim()} subtitle={data.name} />
+                    <Title title={data?.location?.address?.replace('시', '').trim()} subtitle={data?.name} />
                     <Spacing direction="vertical" size={30} />
-                    <Description description={data.description} />
+                    <Description description={data?.description} />
                     <Spacing direction="vertical" size={30} />
-                    <Location location={data.location} />
+                    <Location location={data?.location} />
                     <Spacing direction="vertical" size={54} />
-                    <Reservation />
+                    <Reservation price={data?.price} />
                     <Spacing direction="vertical" size={62} />
-                    <Reviews reviews={data.reviews} reviewRate={reviewRate} />
+                    <Reviews reviews={data?.reviews} reviewRate={reviewRate} />
                 </div>
             </div>
             <Spacing direction="vertical" size={56} />
         </div>
     );
 }
+
+// "data": {
+//     "id": 4,
+//     "name": "대관령 양떼목장",
+//     "activityPhotos": [
+//         "https://k.kakaocdn.net/dn/dansnP/btsFgO6QoTp/zqBQ3QaZovWfQj6vmgUgH0/img_640x640.jpg",
+//         "https://outofcity-bucket.s3.ap-northeast-2.amazonaws.com/53a2a891-6f2a-47f2-89ac-f9167e43c365"
+//     ],
+//     "description": "대관령 양떼목장은 자연 그대로의 못븡르 간직하고 있습니다.",
+//     "state": "activate",
+//     "price": 20000,
+//     "mainCategory": "농촌으로",
+//     "subCategory": [
+//         "조용한 힐링을 원해요.",
+//         "추억이 될 만한 사진을 남기고 싶어요."
+//     ],
+//     "reviewCount": 0,
+//     "locationAverage": 0,
+//     "serviveAverage": 0,
+//     "interestAverage": 0,
+//     "priceAverage": 0,
+//     "ratingAverage": 0.0,
+//     "address": "강원 평창",
+//     "latitude": 35.6895,
+//     "longitude": 139.6917,
+//     "availableDates": [
+//         {
+//             "date": "2024-12-01",
+//             "times": [
+//                 {
+//                     "time": "10:00:00",
+//                     "remainParticipants": 12,
+//                     "maxParticipants": 15
+//                 },
+//                 {
+//                     "time": "14:00:00",
+//                     "remainParticipants": 2,
+//                     "maxParticipants": 10
+//                 }
+//             ]
+//         },
+//         {
+//             "date": "2024-12-02",
+//             "times": [
+//                 {
+//                     "time": "09:00:00",
+//                     "remainParticipants": 3,
+//                     "maxParticipants": 20
+//                 },
+//                 {
+//                     "time": "15:00:00",
+//                     "remainParticipants": 4,
+//                     "maxParticipants": 8
+//                 }
+//             ]
+//         }
+//     ],
+//     "reviews": [],
+//     "createdAt": "2024-11-24T04:15:54.071706",
+//     "updatedAt": "2024-11-24T04:15:54.071709"
+// }

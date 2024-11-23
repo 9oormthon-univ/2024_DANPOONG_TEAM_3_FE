@@ -11,12 +11,12 @@ export function Location({ location }: { location: LocationInformation }) {
             <Spacing direction="vertical" size={20} />
             <Map
                 className="rounded-lg"
-                center={{ lat: location.latitude, lng: location.longitude }}
+                center={{ lat: location?.latitude, lng: location?.longitude }}
                 style={{ width: '100%', height: '242px' }}
                 level={9}
             >
                 <MapMarker
-                    position={{ lat: location.latitude, lng: location.longitude }}
+                    position={{ lat: location?.latitude, lng: location?.longitude }}
                     image={{
                         src: Marker,
                         size: {

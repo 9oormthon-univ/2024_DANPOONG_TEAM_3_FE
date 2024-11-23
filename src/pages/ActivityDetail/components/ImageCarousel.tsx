@@ -4,7 +4,7 @@ export function ImageCarousel({ images }: { images: string[] }) {
     return (
         <Carousel>
             <CarouselContent>
-                {images.map((image, index) => (
+                {images?.map((image, index) => (
                     <CarouselItem key={index}>
                         <img className="w-full h-auto" src={image} alt="" />
                     </CarouselItem>
