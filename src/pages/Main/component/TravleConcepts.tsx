@@ -15,12 +15,12 @@ const TravelConcepts: React.FC = () => {
       <h1 className="text-[35px] font-bold text-[#59C642] mb-[10rem]">당신이 원하는 이번 여행은 무엇인가요?</h1>
 
       {/* Buttons */}
-      <div className="flex space-x-8 text-center text-gray-500 text-[20px] mb-[5rem]">
+      <div className="flex space-x-10 ml-[5rem] text-center text-gray-500 text-[20px] mb-[5rem]">
         <button
           onClick={() => handleNavigate('/content')}
           className="text-[20px] font-regular text-gray-500 hover:text-[#59C642] bg-transparent border-none focus:outline-none"
         >
-        <div className="pl-[17rem]">
+        <div className="pl-[16rem]">
           <span className="block">조용한 힐링을</span>
           <span className="block">원해요</span>
         </div>

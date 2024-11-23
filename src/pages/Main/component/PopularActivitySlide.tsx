@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import heartIcon from "../../.././assets/heartIcon.svg";
 import filledHeartIcon from "../../.././assets/filledHeartIcon.svg";
 import chilgok from "../../.././assets/main-chilgok.svg";
@@ -6,10 +7,11 @@ import tongyeong from "../../.././assets/main-tongyeong.svg";
 import chilgok2 from "../../.././assets/main-chilgok2.svg";
 import bosung from "../../.././assets/main-bosung.svg";
 import star from "../../.././assets/start.svg";
+import sort from "../../.././assets/Sort.svg";
 
 const PopularActivitySlide: React.FC = () => {
   const [scrapStatus, setScrapStatus] = useState<boolean[]>([false, false, false, false]);
-
+  const navigate = useNavigate();
   const items = [
     { title: '[경북 칠곡] 고구마캐기', price: '50,000원', img: chilgok, rating: 4.8 },
     { title: '[경남 통영] 굴따기 체험', price: '12,000원', img: tongyeong, rating: 4.5 },
@@ -24,14 +26,27 @@ const PopularActivitySlide: React.FC = () => {
       return updatedStatus;
     });
   };
+  
+  const handleViewAllClick = () => {
+    // 선택된 카테고리를 파라미터로 전달하면서 ActivityPage로 이동
+    navigate(`/activity`);
+  };
 
   return (
     <div className="relative w-[100vw] h-[750px] bg-gradient-to-r from-[#F7FEF5] to-[#FFFFFF] flex flex-col pt-[7rem]">
         {/* Title */}
-        <h2 className="text-[30px] font-regular text-[#000000] text-left pl-[18rem]">인기 액티비티</h2>
-
+        <h2 className="text-[30px] font-medium text-[#000000] text-left pl-[18rem]">인기 액티비티</h2>
+        <div className="flex justify-end w-full pr-[19.3rem] mb-5">
+          <span
+            className="text-[18px] font-regular text-gray-500 cursor-pointer flex items-center pt-[4rem] pr-[1rem] hover:underline"
+            onClick={handleViewAllClick}
+          >
+            더보기
+            <img src={sort} alt="sort icon" className="w-[24px] h-[24px] ml-1" />
+          </span>
+        </div>
         {/* Items List */}
-        <div className="flex gap-12 w-full justify-start pl-[18rem] pt-[3rem]">
+        <div className="flex gap-12 w-full justify-start pl-[18rem] pt-0">
             {items.map((item, index) => (
             <div key={index} className="w-[238px] h-auto rounded-lg flex-shrink-0">
                 <div className="relative">
