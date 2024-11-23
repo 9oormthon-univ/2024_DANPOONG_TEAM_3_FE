@@ -1,6 +1,8 @@
 import Illustrate from '@/assets/ChallengeIllustrate.svg?react';
 import { useOverlay } from '@toss/use-overlay';
 import { ChallengeUploadModal } from './ChallengeUploadModal';
+import { getCookie } from '@/utils/cookie';
+import { USER_STATE } from '@/constant';
 
 export function CertificateSection({ challengeName }: { challengeName: string }) {
     const overlay = useOverlay();
@@ -14,6 +16,10 @@ export function CertificateSection({ challengeName }: { challengeName: string })
                     <button
                         className="bg-main text-white rounded-full w-[11.688rem] h-11 focus:outline-none border-0"
                         onClick={() => {
+                            if (!getCookie(USER_STATE)) {
+                                alert('로그인 후 인증해주세요');
+                                return;
+                            }
                             overlay.open(({ isOpen, exit }) => <ChallengeUploadModal open={isOpen} setOpen={exit} />);
                         }}
                     >
