@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 
-const TravleConcepts: React.FC<{ onSelectConcept: (concept: string) => void }> = ({ onSelectConcept }) => {
+const TravleConcepts: React.FC<{ onSelectConcept: (concept: string | null) => void }> = ({ onSelectConcept }) => {
   const [selectedConcept, setSelectedConcept] = useState<string | null>(null);
 
   const handleClick = (concept: string) => {
-    setSelectedConcept(concept);
-    onSelectConcept(concept);
+    if (selectedConcept === concept) {
+      setSelectedConcept(null);
+      onSelectConcept(null);
+    } else {
+      setSelectedConcept(concept);
+      onSelectConcept(concept);
+    }
   };
+
   const concepts = [
     { label: '조용한 힐링을 원해요', display: '조용한 힐링을\n원해요' },
     { label: '색다른 여행을 하고 싶어요', display: '색다른 여행을\n하고 싶어요' },
