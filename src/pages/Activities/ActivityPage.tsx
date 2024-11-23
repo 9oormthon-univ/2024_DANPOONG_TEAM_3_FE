@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '.././Main/component/Header';
-import SearchBar from './component/SearchBar';
+// import SearchBar from './component/SearchBar';
+import SearchBar from ".././Main/component/SearchBar";
 import SearchTags from './component/SearchTags';
 import MapComponent from './component/Map'; // 수정된 MapComponent 이름 사용
 import SearchList from './component/SearchList';
@@ -56,7 +57,8 @@ const ActivityPage: React.FC = () => {
   return (
     <div>
       <Header />
-      <SearchBar onSearchComplete={handleSearch} />
+      {/* <SearchBar onSearchComplete={handleSearch} /> */}
+      <SearchBar />  // SearchBar로 수정
       <SearchTags onTagSelect={handleTagSelect} />
       
       {activities.length > 0 ? (

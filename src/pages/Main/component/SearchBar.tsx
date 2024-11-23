@@ -1,3 +1,4 @@
+//메인 검색바
 import React, { useState } from 'react';
 import SearchIcon from "../../.././assets/main-search.svg";
 import CalendarIcon from "../../.././assets/main-calendar.svg";
