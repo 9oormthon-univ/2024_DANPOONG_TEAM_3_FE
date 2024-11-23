@@ -8,7 +8,7 @@ const SearchTags: React.FC<{ onTagSelect: (tag: Tag) => void }> = ({ onTagSelect
 
   const handleTagClick = (tag: Tag) => {
     setSelectedTag(tag);
-    onTagSelect(tag);
+    onTagSelect(tag); // 선택된 태그를 부모 컴포넌트로 전달
   };
 
   return (

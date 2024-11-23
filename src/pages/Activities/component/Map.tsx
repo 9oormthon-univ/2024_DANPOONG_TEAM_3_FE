@@ -1,43 +1,48 @@
-// import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
-// const Map: React.FC<{ activities: any[] }> = ({ activities }) => {
-//   useEffect(() => {
-//     // 카카오 맵을 불러오는 스크립트 및 맵 생성 로직
-//     const script = document.createElement('script');
-//     script.src = '//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY&autoload=false';
-//     script.async = true;
+type Activity = {
+  id: number;
+  lat: number;
+  lng: number;
+  name: string;
+  details: string;
+};
 
-//     script.onload = () => {
-//       window.kakao.maps.load(() => {
-//         const container = document.getElementById('map');
-//         const options = {
-//           center: new window.kakao.maps.LatLng(37.5665, 126.9780),
-//           level: 3,
-//         };
-//         const map = new window.kakao.maps.Map(container, options);
+const MapComponent: React.FC<{ activities: Activity[] }> = ({ activities }) => {
+  const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
 
-//         // 액티비티 핀 생성
-//         activities.forEach((activity) => {
-//           const position = new window.kakao.maps.LatLng(activity.lat, activity.lng);
-//           const marker = new window.kakao.maps.Marker({
-//             position,
-//             map,
-//           });
+  return (
+    <div className="relative">
+      {/* 지도 컴포넌트 */}
+      <Map
+        className="rounded-lg"
+        center={{ lat: 37.5665, lng: 126.9780 }} // 초기 중심 좌표 설정
+        style={{ width: '1160px', height: '339px' }} // 지도 크기 설정
+        level={3} // 확대 레벨 설정
+      >
+        {/* 액티비티 마커 표시 */}
+        {activities.map((activity) => (
+          <MapMarker
+            key={activity.id}
+            position={{ lat: activity.lat, lng: activity.lng }}
+            onClick={() => setSelectedActivity(activity)} // 마커 클릭 시 액티비티 선택
+          />
+        ))}
+      </Map>
 
-//           // 핀 클릭 이벤트 추가
-//           window.kakao.maps.event.addListener(marker, 'click', () => {
-//             // 모달을 표시하는 로직
-//           });
-//         });
-//       });
-//     };
+      {/* 선택된 액티비티 정보 모달 */}
+      {selectedActivity && (
+        <div className="absolute top-0 left-0 bg-white p-4 rounded-lg shadow-lg z-50">
+          <h2 className="text-lg font-bold">{selectedActivity.name}</h2>
+          <p>상세 정보: {selectedActivity.details}</p>
+          <button onClick={() => setSelectedActivity(null)} className="mt-2 text-blue-500">
+            닫기
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
-//     document.head.appendChild(script);
-//   }, [activities]);
-
-//   return (
-//     <div id="map" className="w-[1160px] h-[339px] rounded-[20px]"></div>
-//   );
-// };
-
-// export default Map;
+export default MapComponent;
