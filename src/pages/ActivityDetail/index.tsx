@@ -100,7 +100,9 @@ const mockData = {
 
 export function ActivityDetailPage() {
     const { id } = useParams();
-    const { data } = useGetActivityDetail(Number(id));
+    const { data: detailData } = useGetActivityDetail(Number(id));
+    const data = detailData?.data;
+
     const reviewRate = {
         serviceRate: data?.serviceAverage,
         interestRate: data?.interestAverage,
@@ -115,11 +117,11 @@ export function ActivityDetailPage() {
                 <div className="w-[58.451rem]">
                     <ImageCarousel images={data?.activityPhotos} />
                     <Spacing direction="vertical" size={54} />
-                    <Title title={data?.location?.address?.replace('시', '').trim()} subtitle={data?.name} />
+                    <Title title={data?.address} subtitle={data?.name} />
                     <Spacing direction="vertical" size={30} />
                     <Description description={data?.description} />
                     <Spacing direction="vertical" size={30} />
-                    <Location location={data?.location} />
+                    <Location location={data} />
                     <Spacing direction="vertical" size={54} />
                     <Reservation price={data?.price} />
                     <Spacing direction="vertical" size={62} />
