@@ -4,7 +4,7 @@ import { Title } from './component/Title';
 import { BackgroundGradient } from './component/BackgroundGradient';
 import { Calendar } from './component/Calendar';
 
-export function Challenge() {
+export function ChallengePage() {
     // 날짜별 태그 데이터를 전달합니다.
     // approved: 승인됨, declined: 거절됨, pending: 대기 중
     const tagData = {
