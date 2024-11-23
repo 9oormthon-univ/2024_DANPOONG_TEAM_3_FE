@@ -24,7 +24,7 @@ const TodayChallenge: React.FC = () => {
       {/* Main Title */}
       <h1 className="text-[33px] font-semibold text-green-500 mb-2">오늘의 챌린지</h1>
       {/* Date */}
-      <span className="text-[20px] font-regular text-gray-500 mb-[8rem]">2024년 11월 14일 (목)</span>
+      <span className="text-[20px] font-regular text-gray-500 mb-[8rem]">2024년 11월 24일 (일)</span>
       {/* Oval Character and Challenge Title */}
       <div className="relative flex items-center w-[1080px] h-[171px] justify-center border-2 border-green-500 rounded-full py-4 px-40">
         {/* Character Image Placeholder */}

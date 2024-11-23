@@ -1,5 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    variants: {
+        extend: {
+          outline: ['focus'],
+        },
+      },
     darkMode: ['class'],
     content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
     theme: {

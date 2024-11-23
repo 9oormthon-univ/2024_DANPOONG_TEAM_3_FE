@@ -14,7 +14,7 @@ const SearchBar: React.FC = () => {
   const [selectedDateRange, setSelectedDateRange] = useState<string>('일정');
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
   const [isPeopleModalOpen, setIsPeopleModalOpen] = useState(false);
-  const [adultCount, setAdultCount] = useState(1);
+  const [adultCount, setAdultCount] = useState(0);
   const [childCount, setChildCount] = useState(0);
 
   // 엔터키 입력 시 모달 닫기
@@ -64,7 +64,7 @@ const SearchBar: React.FC = () => {
             setIsRegionInputFocused(true);
           }}
           onKeyDown={handleRegionKeyDown}
-          className="flex-1 outline-none bg-transparent text-gray-700"
+          className="flex-1 outline-none bg-transparent"
           placeholder="가고싶은 여행지를 입력하세요"
         />
         <img src={LocationIcon} className="h-5 w-5 text-gray-500 ml-2" alt="location icon" />

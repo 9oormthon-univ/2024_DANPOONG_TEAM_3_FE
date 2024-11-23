@@ -68,7 +68,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchComplete }) => {
             setIsRegionInputFocused(true);
           }}
           onKeyDown={handleRegionKeyDown}
-          className="flex-1 outline-none bg-transparent text-gray-700"
+          className="flex-1 outline-none bg-transparent text-black"
           placeholder="가고싶은 여행지를 입력하세요"
         />
         <img src={LocationIcon} className="h-5 w-5 text-gray-500 ml-2" alt="location icon" />

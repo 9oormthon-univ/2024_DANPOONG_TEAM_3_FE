@@ -9,7 +9,7 @@ interface PeopleModalProps {
 
 const PeopleModal: React.FC<PeopleModalProps> = ({ adultCount, childCount, setAdultCount, setChildCount }) => {
   return (
-    <div className="absolute top-full mt-4 w-[250px] h-[164px] bg-white shadow-lg rounded-lg p-4 flex flex-col space-y-4">
+    <div className="absolute top-full mt-4 w-[250px] h-[150px] bg-white shadow-lg rounded-lg p-4 flex flex-col space-y-4">
       <div className="flex justify-between items-center">
         <span className="text-gray-900 text-left font-regular text-[17px]">성인</span>
         <div className="flex items-center space-x-2">

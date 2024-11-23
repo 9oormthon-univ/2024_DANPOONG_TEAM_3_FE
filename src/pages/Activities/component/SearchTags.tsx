@@ -18,7 +18,7 @@ const SearchTags: React.FC<{ onTagSelect: (tag: Tag) => void }> = ({ onTagSelect
         <button
           key={tag}
           onClick={() => handleTagClick(tag)}
-          className={`w-[93px] h-[46px] rounded-[72px] border focus:outline-none ${
+          className={`w-[93px] h-[46px] rounded-[72px] border focus:outline-none !important ${
             selectedTag === tag ? 'bg-[#F0FFED] text-black border-[#59C642]' : 'bg-white text-gray-500 border-gray-300'
           }`}
         >

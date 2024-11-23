@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import mountainIcon from "../../.././assets/main-mountain.svg";
 import seaIcon from "../../.././assets/main-sea.svg";
 import countryIcon from "../../.././assets/main-country.svg";
@@ -8,8 +9,9 @@ import yangpyeongImg from "../../.././assets/main-yangpyeong.svg";
 import namyangImg from "../../.././assets/main-namyang.svg";
 
 const RecommendSlide: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<keyof typeof items>('mountain'); // 초기값 수정
-  
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState<keyof typeof items>('mountain');
+
   const categories = [
     { label: '산으로', value: 'mountain', icon: mountainIcon },
     { label: '바다로', value: 'sea', icon: seaIcon },
@@ -18,27 +20,32 @@ const RecommendSlide: React.FC = () => {
 
   const items = {
     mountain: [
-      { title: '[충남 태안] 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
-      { title: '[전남 담양] 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
-      { title: '[경기 양평] 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
-      { title: '[경기 남양주] 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
+      { title: '[충남 태안]\n 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
+      { title: '[전남 담양]\n 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
+      { title: '[경기 양평]\n 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
+      { title: '[경기 남양주]\n 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
     ],
     sea: [
-      { title: '[충남 태안] 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
-      { title: '[전남 담양] 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
-      { title: '[경기 양평] 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
-      { title: '[경기 남양주] 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
+      { title: '[충남 태안]\n 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
+      { title: '[전남 담양]\n 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
+      { title: '[경기 양평]\n 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
+      { title: '[경기 남양주]\n 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
     ],
     farm: [
-      { title: '[충남 태안] 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
-      { title: '[전남 담양] 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
-      { title: '[경기 양평] 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
-      { title: '[경기 남양주] 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
+      { title: '[충남 태안]\n 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
+      { title: '[전남 담양]\n 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
+      { title: '[경기 양평]\n 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
+      { title: '[경기 남양주]\n 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
     ],
   };
 
   const handleCategoryClick = (value: keyof typeof items) => {
     setSelectedCategory(value);
+  };
+
+  const handleViewAllClick = () => {
+    // 선택된 카테고리를 파라미터로 전달하면서 ActivityPage로 이동
+    navigate(`/activities?view=전체보기&category=${categories.find(cat => cat.value === selectedCategory)?.label}`);
   };
 
   return (
@@ -64,30 +71,40 @@ const RecommendSlide: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* 전체보기 버튼 */}
+      <div className="flex justify-end w-full pr-16 mb-4">
+        <span
+          className="text-[18px] font-regular text-gray-500 cursor-pointer"
+          onClick={handleViewAllClick}
+        >
+          전체보기
+        </span>
+      </div>
+
       {/* Experience Items Slider */}
       <div className="relative w-full flex items-center px-12 justify-center">
-        {/* <span className="text-[18px] font-regular text-gray-500 mt-4">전체보기</span> */}
         {/* Left Arrow Button */}
         <button className="absolute top-1/4 left-20 w-[45px] h-[45px] bg-white rounded-full shadow-md flex items-center justify-center">
-            <span className="material-icons">＜</span>
+          <span className="material-icons">＜</span>
         </button>
-            
+
         {/* Items List */}
         <div className="flex gap-12 w-[950px] justify-center">
-            {items[selectedCategory]?.map((item, index) => (
+          {items[selectedCategory]?.map((item, index) => (
             <div key={index} className="w-[238px] h-auto rounded-lg flex-shrink-0">
-                <img src={item.img} alt={item.title} className="w-full h-[238px] object-cover rounded-t-lg" />
-                <div className="p-4 flex flex-col">
-                    <h3 className="font-semibold text-gray-800 text-left mb-2">{item.title}</h3>
-                    <p className="text-black-500 text-xl font-bold text-right">{item.price}</p>
-                </div>
+              <img src={item.img} alt={item.title} className="w-full h-[238px] object-cover rounded-t-lg" />
+              <div className="p-4 flex flex-col">
+                <h3 className="font-semibold text-gray-800 text-left mb-2">{item.title}</h3>
+                <p className="text-black-500 text-xl font-bold text-right">{item.price}</p>
+              </div>
             </div>
-            ))}
+          ))}
         </div>
-            
+
         {/* Right Arrow Button */}
         <button className="absolute top-1/4 right-20 w-[45px] h-[45px] bg-white rounded-full shadow-md flex items-center justify-center">
-            <span className="material-icons">＞</span>
+          <span className="material-icons">＞</span>
         </button>
       </div>
     </div>
