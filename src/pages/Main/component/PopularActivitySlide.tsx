@@ -33,9 +33,9 @@ const PopularActivitySlide: React.FC = () => {
   };
 
   return (
-    <div className="relative w-[100vw] h-[750px] bg-gradient-to-r from-[#F7FEF5] to-[#FFFFFF] flex flex-col pt-[7rem]">
+    <div className="relative w-[100vw] h-[700px] bg-gradient-to-r from-[#F7FEF5] to-[#FFFFFF] flex flex-col pt-[7rem]">
         {/* Title */}
-        <h2 className="text-[30px] font-medium text-[#000000] text-left pl-[18rem]">인기 액티비티</h2>
+        <h2 className="text-[30px] font-medium text-[#000000] text-left pl-[16rem]">인기 액티비티</h2>
         <div className="flex justify-end w-full pr-[19.3rem] mb-5">
           <span
             className="text-[18px] font-regular text-gray-500 cursor-pointer flex items-center pt-[4rem] pr-[1rem] hover:underline"
@@ -46,7 +46,7 @@ const PopularActivitySlide: React.FC = () => {
           </span>
         </div>
         {/* Items List */}
-        <div className="flex gap-12 w-full justify-start pl-[18rem] pt-0">
+        <div className="flex text-left gap-12 w-full pl-[16rem] pt-0 mb-1">
             {items.map((item, index) => (
             <div key={index} className="w-[238px] h-auto rounded-lg flex-shrink-0">
                 <div className="relative">
@@ -56,8 +56,8 @@ const PopularActivitySlide: React.FC = () => {
                     onClick={() => handleScrapClick(index)}
                     />
                 </div>
-                <div className="p-4">
-                <h3 className="text-lg font-regular text-gray-800 mb-2">{item.title}</h3>
+                <div className="mt-5">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">{item.title}</h3>
                 <div className="flex items-center justify-between">
                     <p className="text-black text-xl font-semibold">{item.price}</p>
                     <div className="flex items-center">
