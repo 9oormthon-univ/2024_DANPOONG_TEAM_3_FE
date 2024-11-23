@@ -35,7 +35,7 @@ const PopularActivitySlide: React.FC = () => {
   return (
     <div className="relative w-[100vw] h-[700px] bg-gradient-to-r from-[#F7FEF5] to-[#FFFFFF] flex flex-col pt-[7rem]">
         {/* Title */}
-        <h2 className="text-[30px] font-medium text-[#000000] text-left pl-[16rem]">인기 액티비티</h2>
+        <h2 className="text-[30px] font-medium text-[#000000] text-left pl-[18rem]">인기 액티비티</h2>
         <div className="flex justify-end w-full pr-[19.3rem] mb-5">
           <span
             className="text-[18px] font-regular text-gray-500 cursor-pointer flex items-center pt-[4rem] pr-[1rem] hover:underline"
@@ -46,13 +46,13 @@ const PopularActivitySlide: React.FC = () => {
           </span>
         </div>
         {/* Items List */}
-        <div className="flex text-left gap-12 w-full pl-[16rem] pt-0 mb-1">
+        <div className="flex text-left gap-12 w-full pl-[18rem] pt-0 mb-1">
             {items.map((item, index) => (
             <div key={index} className="w-[238px] h-auto rounded-lg flex-shrink-0">
                 <div className="relative">
                 <img src={item.img} alt={item.title} className="w-full h-[238px] object-cover rounded-lg" />
                     <img src={scrapStatus[index] ? filledHeartIcon : heartIcon} alt="heart icon" 
-                    className="w-[24px] h-[22px] absolute top-4 right-4 w-8 h-8 focus:outline-none background-color transparent" 
+                    className="w-[24px] h-[22px] absolute top-4 right-4 w-8 h-8 focus:outline-none background-color transparent cursor-pointer" 
                     onClick={() => handleScrapClick(index)}
                     />
                 </div>
