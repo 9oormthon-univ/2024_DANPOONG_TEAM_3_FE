@@ -12,13 +12,14 @@ const SearchTags: React.FC<{ onTagSelect: (tag: Tag) => void }> = ({ onTagSelect
   };
 
   return (
-    <div className="flex flex-wrap gap-2 my-4">
+    <div className="flex flex-wrap gap-5 my-4">
+      <span className="text-[17px] font-regular text-gray-500">검색결과</span>
       {tags.map((tag) => (
         <button
           key={tag}
           onClick={() => handleTagClick(tag)}
-          className={`w-[93px] h-[46px] rounded-[72px] border ${
-            selectedTag === tag ? 'bg-[#59C642] text-white' : 'bg-white text-gray-500'
+          className={`w-[93px] h-[46px] rounded-[72px] border focus:outline-none ${
+            selectedTag === tag ? 'bg-[#F0FFED] text-black border-[#59C642]' : 'bg-white text-gray-500 border-gray-300'
           }`}
         >
           {tag}

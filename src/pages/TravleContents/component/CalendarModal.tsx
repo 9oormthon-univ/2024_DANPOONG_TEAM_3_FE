@@ -97,7 +97,7 @@ const CalendarModal: React.FC<CalendarModalProps> = ({ onSelectDateRange, onClos
             <button
               key={day.format('YYYY-MM-DD')}
               onClick={() => handleDateClick(day)}
-              className={`w-full h-10 rounded-full flex items-center justify-center transition-colors duration-200 ${
+              className={`w-full h-10 rounded-full flex items-center justify-center transition-colors duration-200 border border-none focus:outline-none ${
                 isSelected ? 'bg-[#59C642] text-white' : day.isSame(currentDate, 'month') ? 'text-gray-900' : 'text-gray-400'
               } hover:bg-[#59C642] hover:text-white`}
             >

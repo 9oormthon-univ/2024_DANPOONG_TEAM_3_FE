@@ -51,7 +51,7 @@ const SearchBar: React.FC = () => {
 
       {/* 여행지역 검색창 */}
       <div
-        className={`flex justify-between items-center w-1/3 px-4 py-2 rounded-full ${
+        className={`flex justify-between items-center w-1/3 px-4 py-2 rounded-[12px] ${
           isRegionInputFocused ? 'bg-transparent border border-black' : 'bg-gray-100'
         }`}
       >
@@ -81,7 +81,7 @@ const SearchBar: React.FC = () => {
       {/* 일정 검색창 */}
       <div className="relative flex w-1/3">
         <div
-          className={`flex justify-between items-center w-full px-4 py-2 cursor-pointer rounded-full ${
+          className={`flex justify-between items-center w-full px-4 py-2 cursor-pointer rounded-[12px] ${
             isCalendarModalOpen ? 'bg-transparent border border-black' : 'bg-gray-100'
           }`}
           onClick={() => setIsCalendarModalOpen(true)}
@@ -105,7 +105,7 @@ const SearchBar: React.FC = () => {
 
       {/* 인원 검색창 */}
       <div
-        className={`relative flex justify-between items-center w-1/3 px-4 py-2 cursor-pointer rounded-full ${
+        className={`relative flex justify-between items-center w-1/3 px-4 py-2 cursor-pointer rounded-[12px] ${
           isPeopleModalOpen ? 'bg-transparent border border-black' : 'bg-gray-100'
         }`}
         onClick={() => setIsPeopleModalOpen(true)}
