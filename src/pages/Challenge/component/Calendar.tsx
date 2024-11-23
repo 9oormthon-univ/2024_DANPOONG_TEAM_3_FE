@@ -65,9 +65,9 @@ export function Calendar({ tagData }: { tagData: Record<string, string> }) {
                         {day}
                     </div>
                 ))}
-                {calendarDays.map((day, idx) => {
+                {calendarDays?.map((day, idx) => {
                     const isCurrentMonth = isSameMonth(day, currentDate);
-                    const tag = tagData[format(day, 'yyyy-MM-dd')] || null;
+                    const tag = tagData?.[format(day, 'yyyy-MM-dd')] || null;
 
                     return <DayBox key={idx} day={day} isCurrentMonth={isCurrentMonth} tag={tag} />;
                 })}
@@ -96,9 +96,9 @@ function DayBox({ isCurrentMonth, day, tag }: { isCurrentMonth: boolean; day: Da
             </span>
             {tag && (
                 <div className="self-center">
-                    {tag === 'approved' ? (
+                    {tag === 'certified' ? (
                         <Approved />
-                    ) : tag === 'declined' ? (
+                    ) : tag === 'uncertified' ? (
                         <Declined />
                     ) : tag === 'pending' ? (
                         <Pending />

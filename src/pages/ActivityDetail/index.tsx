@@ -6,6 +6,7 @@ import { Description } from './components/Description';
 import { Location } from './components/Location';
 import { Reservation } from './components/Reservation';
 import { Reviews } from './components/Review';
+import Header from '../Main/component/Header';
 
 const mockData = {
     code: 200,
@@ -93,8 +94,9 @@ const reviewRate = { serviceRate: 5, interestRate: 4, locationRate: 1, priceRate
 export function ActivityDetailPage() {
     return (
         <div className="size-full">
-            {/* <Header /> */}
-            <div className="flex justify-center items-center flex-col h-fit overflow-y-auto">
+            <Header />
+            <Spacing direction="vertical" size={56} />
+            <div className="flex justify-center items-center flex-col w-full h-fit mt-[105px]">
                 <div className="w-[58.451rem]">
                     <ImageCarousel images={data.activityPhotos} />
                     <Spacing direction="vertical" size={54} />

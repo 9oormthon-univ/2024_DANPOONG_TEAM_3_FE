@@ -170,46 +170,44 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 CarouselItem.displayName = 'CarouselItem';
 
 const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-    ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+    ({ className, ...props }, ref) => {
         const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
         return (
-            <Button
+            <button
                 ref={ref}
-                variant={variant}
-                size={size}
                 className={cn(
-                    'absolute  h-14 w-14 rounded-full',
+                    'absolute h-14 w-14 rounded-full',
                     orientation === 'horizontal'
-                        ? '-left-12 top-1/2 -translate-y-1/2'
+                        ? '-left-7 top-1/2 -translate-y-1/2'
                         : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
+                    'flex items-center justify-center',
                     className
                 )}
                 disabled={!canScrollPrev}
                 onClick={scrollPrev}
                 {...props}
             >
-                <ChevronLeft className="h-5 w-5 text-uiBlack" />
-            </Button>
+                <ChevronLeft className="text-uiBlack" />
+            </button>
         );
     }
 );
 CarouselPrevious.displayName = 'CarouselPrevious';
 
 const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-    ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+    ({ className, ...props }, ref) => {
         const { orientation, scrollNext, canScrollNext } = useCarousel();
 
         return (
-            <Button
+            <button
                 ref={ref}
-                variant={variant}
-                size={size}
                 className={cn(
                     'absolute h-14 w-14 rounded-full',
                     orientation === 'horizontal'
-                        ? '-right-12 top-1/2 -translate-y-1/2'
+                        ? '-right-7 top-1/2 -translate-y-1/2'
                         : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
+                    'flex items-center justify-center',
                     className
                 )}
                 disabled={!canScrollNext}
@@ -217,7 +215,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
                 {...props}
             >
                 <ChevronRight className="text-uiBlack" />
-            </Button>
+            </button>
         );
     }
 );
