@@ -11,9 +11,11 @@ import SearchBar from "./component/SearchBar.tsx";
 const MainPage = () => {
   return (
     <div>
+      <div className="z-[20]">
       <Header />
+      </div>
       <Banner />
-      <div className="absolute bottom-[53%] left-[59%] transform -translate-x-1/2 w-[80%] z-[1000]">
+      <div className="absolute bottom-[53%] left-[59%] transform -translate-x-1/2 w-[80%] z-[10]">
         <SearchBar />
       </div>
       <TodayChallenge />
