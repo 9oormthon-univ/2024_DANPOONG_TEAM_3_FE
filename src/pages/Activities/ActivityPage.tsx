@@ -4,7 +4,6 @@ import SearchBar from "./component/SearchBar";
 import SearchTags from './component/SearchTags';
 import MapComponent from './component/MapComponent';
 import SearchList from './component/SearchList';
-import Footer from ".././Main/component/Footer";
 import activity1 from "../.././assets/activity1.svg";
 import activity2 from "../.././assets/activity2.svg";
 import activity3 from "../.././assets/activity3.svg";
@@ -47,10 +46,17 @@ const ActivityPage: React.FC = () => {
   ];
 
   useEffect(() => {
-    // 기본 검색 조건에 맞는 초기 활동 목록 설정
-    setActivities(dummyActivities.filter(activity => activity.title.includes(searchParams.region)));
+    if (searchParams.region) {
+      setActivities(dummyActivities.filter(activity => activity.title.includes(searchParams.region)));
+    } else {
+      setActivities(dummyActivities);
+    }
   }, [searchParams]);
-
+  
+  useEffect(() => {
+    setActivities(dummyActivities);
+  }, []);
+  
   const handleSearch = (region: string, date: string, adultCount: number, childCount: number) => {
     // 검색 조건이 설정되었을 때, activities를 필터링하여 설정하는 로직
     setSearchParams({ region, date, adultCount, childCount });
@@ -72,14 +78,8 @@ const ActivityPage: React.FC = () => {
         <SearchBar onSearchComplete={handleSearch} />
       </div>
       <SearchTags onTagSelect={handleTagSelect} />
-      {activities.length > 0 ? (
-        <>
-          <MapComponent activities={activities} />
-          <SearchList activities={activities} />
-        </>
-      ) : (
-        <Footer />
-      )}
+      <MapComponent activities={activities} />
+      <SearchList activities={activities} />
     </div>
   );
 };
