@@ -54,10 +54,7 @@ export const postKakaoLogin = async (code: string, callback: () => void) => {
                     })
                     .then((res) => {
                         console.log(res);
-                        setCookie(USER_STATE, res.data, {
-                            path: '/',
-                            maxAge: 60 * 60 * 24 * 7,
-                        });
+                        setCookie(USER_STATE, res.data);
                         callback();
                     });
             } catch (error) {

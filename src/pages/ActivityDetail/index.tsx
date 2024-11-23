@@ -111,6 +111,7 @@ export function ActivityDetailPage() {
                     <Reviews reviews={data.reviews} reviewRate={reviewRate} />
                 </div>
             </div>
+            <Spacing direction="vertical" size={56} />
         </div>
     );
 }

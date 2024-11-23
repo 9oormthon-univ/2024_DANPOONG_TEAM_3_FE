@@ -40,7 +40,7 @@ export function ChallengeUploadModal({ open, setOpen }: { open: boolean; setOpen
     async function handleSubmit() {
         if (!images.length) return;
         const image_url = await postS3(images[0].file);
-        mutate({ imageUrl: image_url.replace(' ', '') });
+        mutate({ imageUrl: image_url?.replace(' ', '') });
     }
 }
 
