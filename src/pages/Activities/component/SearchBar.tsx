@@ -4,17 +4,21 @@ import CalendarIcon from "../../.././assets/main-calendar.svg";
 import LocationIcon from "../../.././assets/main-location.svg";
 import PeopleIcon from "../../.././assets/main-people.svg";
 import RegionModal from './RegionModal.tsx';
-import CalendarModal from './CalendarModal';
-import PeopleModal from './PeopleModal';
+import CalendarModal from './CalendarModal.tsx';
+import PeopleModal from './PeopleModal.tsx';
 
-const SearchBar: React.FC = () => {
+interface SearchBarProps {
+    onSearchComplete: (region: string, date: string, adultCount: number, childCount: number) => void;
+  }
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearchComplete }) => {
   const [region, setRegion] = useState<string>('');
   const [isRegionModalOpen, setIsRegionModalOpen] = useState(false);
   const [isRegionInputFocused, setIsRegionInputFocused] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState<string>('일정');
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
   const [isPeopleModalOpen, setIsPeopleModalOpen] = useState(false);
-  const [adultCount, setAdultCount] = useState(0);
+  const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
 
   // 엔터키 입력 시 모달 닫기
@@ -34,17 +38,17 @@ const SearchBar: React.FC = () => {
 
   const handleSearchClick = () => {
     if (region && selectedDateRange !== '일정') {
-      alert(`여행지: ${region}, 일정: ${selectedDateRange}, 성인: ${adultCount}, 어린이: ${childCount}`);
+      onSearchComplete(region, selectedDateRange, adultCount, childCount);
     } else {
       alert('여행지역과 일정을 모두 선택해주세요.');
     }
   };
 
   return (
-    <div className="relative w-[1080px] h-[82px] bg-white rounded-full border-2 border-green-500 flex items-center px-4 space-x-4 z-50">
+    <div className="relative w-[1280px] h-[82px] bg-white rounded-full border-2 border-green-500 flex items-center px-4 space-x-4 z-10">
       {(isRegionModalOpen || isCalendarModalOpen || isPeopleModalOpen) && (
         <div
-          className="fixed inset-0 z-50 bg-transparent"
+          className="fixed inset-0 z-40 bg-transparent"
           onClick={handleOutsideClick} // 외부 클릭 처리
         />
       )}
@@ -64,18 +68,20 @@ const SearchBar: React.FC = () => {
             setIsRegionInputFocused(true);
           }}
           onKeyDown={handleRegionKeyDown}
-          className="flex-1 outline-none bg-transparent"
+          className="flex-1 outline-none bg-transparent text-black"
           placeholder="가고싶은 여행지를 입력하세요"
         />
         <img src={LocationIcon} className="h-5 w-5 text-gray-500 ml-2" alt="location icon" />
       </div>
       {isRegionModalOpen && (
-        <RegionModal
-          onSelectRegion={(selectedRegion: string) => {
-            setRegion(selectedRegion);
-            setIsRegionModalOpen(false);
-          }}
-        />
+        <div className="absolute top-full mt-0 left-1/2 transform -translate-x-1/2 w-[436px] z-50" onClick={(e) => e.stopPropagation()}>
+          <RegionModal
+            onSelectRegion={(selectedRegion: string) => {
+              setRegion(selectedRegion);
+              setIsRegionModalOpen(false);
+            }}
+          />
+        </div>
       )}
 
       {/* 일정 검색창 */}
@@ -91,7 +97,7 @@ const SearchBar: React.FC = () => {
         </div>
 
         {isCalendarModalOpen && (
-          <div className="absolute top-full mt-0 left-1/2 transform -translate-x-1/2 w-[436px]">
+          <div className="absolute top-full mt-0 left-1/2 transform -translate-x-1/2 w-[436px] z-50" onClick={(e) => e.stopPropagation()}>
             <CalendarModal
               onSelectDateRange={(startDate: string, endDate: string) => {
                 setSelectedDateRange(`${startDate} ~ ${endDate}`);
@@ -121,7 +127,7 @@ const SearchBar: React.FC = () => {
         )}
 
         {isPeopleModalOpen && (
-          <div className="absolute top-full mt-0 left-1/2 transform -translate-x-1/2 w-[250px]">
+          <div className="absolute top-full mt-0 left-1/2 transform -translate-x-1/2 w-[250px] z-50" onClick={(e) => e.stopPropagation()}>
             <PeopleModal
               adultCount={adultCount}
               childCount={childCount}

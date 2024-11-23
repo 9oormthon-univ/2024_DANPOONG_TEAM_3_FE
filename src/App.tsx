@@ -10,6 +10,7 @@ import MainPage from './pages/Main/MainPage.tsx';
 import TravleContents from './pages/TravleContents/TravleContents.tsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MyPage } from './pages/MyPage/index.tsx';
+import Activity from "./pages/Activities/ActivityPage.tsx";
 
 function App() {
     const queryClient = new QueryClient({
@@ -33,6 +34,7 @@ function App() {
                         <Route path="/" element={<MainPage />} />
                         <Route path="/content" element={<TravleContents />} />
                         <Route path="/mypage" element={<MyPage />} />
+                        <Route path="/activity" element={<Activity />} />
                     </Routes>
                 </OverlayProvider>
             </BrowserRouter>
