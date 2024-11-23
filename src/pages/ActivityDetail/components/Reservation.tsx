@@ -8,7 +8,7 @@ import { DateSelect } from './DateSelect';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { GuestCounter } from './Counter';
 
-export function Reservation() {
+export function Reservation({ price }: { price: number }) {
     const methods = useForm<ReservationView>({
         mode: 'onSubmit',
         reValidateMode: 'onSubmit',
@@ -32,7 +32,7 @@ export function Reservation() {
                     <div className="w-[30rem] h-full">
                         <GuestCounter />
                         <Spacing direction="vertical" size={62} />
-                        <ReservationForm />
+                        <ReservationForm price={price} />
                     </div>
                 </SectionLayout>
             </FormProvider>

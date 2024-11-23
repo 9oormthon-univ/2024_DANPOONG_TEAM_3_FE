@@ -10,8 +10,8 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { SHOPPING_BAG_LIST_KEY } from '../constant';
 
-export function ReservationForm() {
-    const { watch } = useFormContext();
+export function ReservationForm({ price }: { price: number }) {
+    const { watch, handleSubmit } = useFormContext();
     const currentReservation = watch();
 
     return (
@@ -24,14 +24,26 @@ export function ReservationForm() {
             <TimeSection />
             <Spacing direction="vertical" size={17} />
             <div className="w-full h-fit">
-                <Price price={20000} />
+                <Price price={price} />
             </div>
             <Spacing direction="vertical" size={20} />
             <div className="w-full flex justify-between gap-3">
                 <Button variant="outline" onClick={handleShoppingBag}>
                     <ShoppingBag />
                 </Button>
-                <Button variant="default">구매하기</Button>
+                <Button
+                    variant="default"
+                    onClick={handleSubmit(
+                        () => {
+                            alert('구매가 완료되었습니다.');
+                        },
+                        () => {
+                            alert('조건을 모두 선택해주세요.');
+                        }
+                    )}
+                >
+                    구매하기
+                </Button>
             </div>
         </div>
     );
@@ -49,10 +61,17 @@ export function ReservationForm() {
 }
 
 export function Price({ price }: { price: number }) {
+    const { watch } = useFormContext();
+    const currentAdultCount = watch('adultCount') ?? 0;
+    const currentChildCount = watch('childCount') ?? 0;
+    const totalParticipants = currentAdultCount + currentChildCount;
+
     return (
         <div className="flex gap-1 items-end w-full font-semibold justify-end">
             <p className="text-uiGray text-xl pb-[2px]">총</p>
-            <p className="text-uiBlack text-3xl">{new Intl.NumberFormat('ko-KR').format(price)}원</p>
+            <p className="text-uiBlack text-3xl">
+                {new Intl.NumberFormat('ko-KR').format((price ?? 0) * totalParticipants)}원
+            </p>
         </div>
     );
 }
@@ -196,7 +215,7 @@ export function TimeSection() {
                                 )}
                             </RadioGroup>
                         }
-                    ></TimeSelectPopover>
+                    />
                 )}
             />
         </div>
