@@ -20,22 +20,22 @@ const RecommendSlide: React.FC = () => {
 
   const items = {
     mountain: [
-      { title: '[충남 태안]\n 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
-      { title: '[전남 담양]\n 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
-      { title: '[경기 양평]\n 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
-      { title: '[경기 남양주]\n 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
+      { title: '[충남 태안] 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
+      { title: '[전남 담양] 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
+      { title: '[경기 양평] 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
+      { title: '[경기 남양주] 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
     ],
     sea: [
-      { title: '[충남 태안]\n 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
-      { title: '[전남 담양]\n 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
-      { title: '[경기 양평]\n 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
-      { title: '[경기 남양주]\n 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
+      { title: '[충남 태안] 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
+      { title: '[전남 담양] 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
+      { title: '[경기 양평] 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
+      { title: '[경기 남양주] 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
     ],
     farm: [
-      { title: '[충남 태안]\n 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
-      { title: '[전남 담양]\n 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
-      { title: '[경기 양평]\n 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
-      { title: '[경기 남양주]\n 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
+      { title: '[충남 태안] 어촌 바다에서 즐기는 낚시 체험', price: '50,000원', img: chungnamImg },
+      { title: '[전남 담양] 200평이 넓은 마당이 있는 \u2018소예방\u2019', price: '120,000원', img: damyangImg },
+      { title: '[경기 양평] 여름 필수 코스! 수박 수확 체험으로 시원한 하루', price: '20,000원', img: yangpyeongImg },
+      { title: '[경기 남양주] 아늑한 감성의 \u2018그랜마 하우스\u2019', price: '200,000원', img: namyangImg },
     ],
   };
 
@@ -45,11 +45,11 @@ const RecommendSlide: React.FC = () => {
 
   const handleViewAllClick = () => {
     // 선택된 카테고리를 파라미터로 전달하면서 ActivityPage로 이동
-    navigate(`/activities?view=전체보기&category=${categories.find(cat => cat.value === selectedCategory)?.label}`);
+    navigate(`/activity`);
   };
 
   return (
-    <div className="relative w-[100vw] h-[767px] bg-gradient-to-r from-[#F7FEF5] to-[#FFFFFF] flex flex-col items-center pt-8 pb-8">
+    <div className="relative w-[100vw] h-[800px] bg-gradient-to-r from-[#F7FEF5] flex flex-col items-center pt-8 pb-8">
       {/* Title */}
       <h2 className="text-[30px] font-semibold text-green-500 mt-8 mb-14">도시를 떠나 새로운 경험을 만끽해보세요!</h2>
 
@@ -73,9 +73,9 @@ const RecommendSlide: React.FC = () => {
       </div>
 
       {/* 전체보기 버튼 */}
-      <div className="flex justify-end w-full pr-16 mb-4">
+      <div className="flex justify-end w-full pr-[19.3rem] mb-5">
         <span
-          className="text-[18px] font-regular text-gray-500 cursor-pointer"
+          className="text-[18px] font-regular text-gray-500 cursor-pointer hover:underline"
           onClick={handleViewAllClick}
         >
           전체보기
